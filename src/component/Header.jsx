@@ -80,7 +80,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/login"
+            to="/Login"
             style={({ isActive }) => ({
               color: isActive ? 'red' : 'white',
               textDecoration: 'none',

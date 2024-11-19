@@ -1,152 +1,139 @@
-// import React from "react";
+import React, { useState } from 'react';
 
-// const LoginPage = () => {
-//   return (
-//     <div
-//       style={{
-//         display: "flex",
-//         justifyContent: "center",
-//         alignItems: "center",
-//         height: "100vh",
-//         backgroundColor: "#f4f4f9",
-//         fontFamily: "'Arial', sans-serif",
-//       }}
-//     >
-//       <div
-//         style={{
-//           width: "100%",
-//           maxWidth: "400px",
-//           padding: "20px",
-//           backgroundColor: "white",
-//           borderRadius: "10px",
-//           boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-//         }}
-//       >
-//         <h2
-//           style={{
-//             textAlign: "center",
-//             marginBottom: "20px",
-//             fontSize: "1.8rem",
-//             color: "#333",
-//           }}
-//         >
-//           Login
-//         </h2>
+const Login = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const [errorMessage, setErrorMessage] = useState('');
 
-//         <form>
-//           {/* Email Input */}
-//           <div style={{ marginBottom: "15px" }}>
-//             <label
-//               htmlFor="email"
-//               style={{
-//                 display: "block",
-//                 marginBottom: "5px",
-//                 color: "#555",
-//                 fontWeight: "bold",
-//               }}
-//             >
-//               Email
-//             </label>
-//             <input
-//               type="email"
-//               id="email"
-//               placeholder="Enter your email"
-//               style={{
-//                 width: "100%",
-//                 padding: "10px",
-//                 border: "1px solid #ccc",
-//                 borderRadius: "5px",
-//                 fontSize: "1rem",
-//               }}
-//             />
-//           </div>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-//           {/* Password Input */}
-//           <div style={{ marginBottom: "15px" }}>
-//             <label
-//               htmlFor="password"
-//               style={{
-//                 display: "block",
-//                 marginBottom: "5px",
-//                 color: "#555",
-//                 fontWeight: "bold",
-//               }}
-//             >
-//               Password
-//             </label>
-//             <input
-//               type="password"
-//               id="password"
-//               placeholder="Enter your password"
-//               style={{
-//                 width: "100%",
-//                 padding: "10px",
-//                 border: "1px solid #ccc",
-//                 borderRadius: "5px",
-//                 fontSize: "1rem",
-//               }}
-//             />
-//           </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Basic validation for empty fields
+    if (!formData.email || !formData.password) {
+      setErrorMessage('Please fill out both fields.');
+      return;
+    }
 
-//           {/* Submit Button */}
-//           <button
-//             type="submit"
-//             style={{
-//               width: "100%",
-//               padding: "12px",
-//               backgroundColor: "#00bcd4",
-//               color: "white",
-//               border: "none",
-//               borderRadius: "5px",
-//               fontWeight: "bold",
-//               fontSize: "1rem",
-//               cursor: "pointer",
-//               transition: "background-color 0.3s",
-//             }}
-//             onMouseOver={(e) => (e.target.style.backgroundColor = "#008c99")}
-//             onMouseOut={(e) => (e.target.style.backgroundColor = "#00bcd4")}
-//           >
-//             Login
-//           </button>
-//         </form>
+    // Handle login logic here (e.g., call API to authenticate the user)
+    console.log('Form submitted:', formData);
+    // If login is successful, clear error message and proceed
+    setErrorMessage('');
+  };
 
-//         {/* Forgot Password and Signup Links */}
-//         <div
-//           style={{
-//             marginTop: "15px",
-//             textAlign: "center",
-//             fontSize: "0.9rem",
-//             color: "#555",
-//           }}
-//         >
-//           <p>
-//             Forgot your password?{" "}
-//             <a
-//               href="/reset-password"
-//               style={{
-//                 color: "#00bcd4",
-//                 textDecoration: "none",
-//               }}
-//             >
-//               Reset it here
-//             </a>
-//           </p>
-//           <p>
-//             Don't have an account?{" "}
-//             <a
-//               href="/signup"
-//               style={{
-//                 color: "#00bcd4",
-//                 textDecoration: "none",
-//               }}
-//             >
-//               Sign up now
-//             </a>
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+  return (
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Login</h2>
+      {errorMessage && <p style={styles.error}>{errorMessage}</p>}
+      <form onSubmit={handleSubmit} style={styles.form}>
+        <div style={styles.formGroup}>
+          <label style={styles.label} htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            style={styles.input}
+            required
+          />
+        </div>
+        <div style={styles.formGroup}>
+          <label style={styles.label} htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Enter your password"
+            style={styles.input}
+            required
+          />
+        </div>
+        <button type="submit" style={styles.button}>Login</button>
+      </form>
+      <p style={styles.signupLink}>
+        Don't have an account? <a href="/signup" style={styles.link}>Sign up</a>
+      </p>
+    </div>
+  );
+};
 
-// export default LoginPage;
+const styles = {
+  container: {
+    maxWidth: '400px',
+    margin: '0 auto',
+    padding: '20px',
+    backgroundColor: '#f9f9f9',
+    borderRadius: '8px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    textAlign: 'center',
+  },
+  heading: {
+    marginBottom: '20px',
+    fontSize: '2rem',
+    fontWeight: '600',
+    color: '#333',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+  },
+  formGroup: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
+  label: {
+    marginBottom: '8px',
+    fontSize: '1rem',
+    fontWeight: '500',
+    color: '#555',
+  },
+  input: {
+    padding: '10px',
+    fontSize: '1rem',
+    width: '100%',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    outline: 'none',
+    transition: 'border-color 0.3s',
+  },
+  button: {
+    padding: '12px 20px',
+    fontSize: '1rem',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  },
+  error: {
+    color: 'red',
+    marginBottom: '10px',
+    fontSize: '1rem',
+  },
+  signupLink: {
+    marginTop: '20px',
+    fontSize: '1rem',
+    color: '#555',
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#007bff',
+  },
+};
+
+export default Login;

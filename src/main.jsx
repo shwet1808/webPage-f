@@ -9,7 +9,7 @@ import About from './component/About.jsx'
 import Contact from './component/Contact.jsx'
 import Layout from './layout.jsx'
 import IntroPage from './component/IntroPage.jsx'
-// import LoginPage from './component/Login.jsx'
+import Login from './component/Login.jsx'
 import { RouterProvider , createBrowserRouter } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -33,10 +33,10 @@ const router = createBrowserRouter([
           path: "Home",
           element: <Home />
         },
-        // {
-        //   path: " LoginPage ",
-        //   element: <LoginPage />
-        // }
+        {
+          path: "Login ",
+          element: <Login />
+        },
 
       ]
     }
