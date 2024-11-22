@@ -1,139 +1,184 @@
 import React, { useState } from 'react';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Basic validation for empty fields
-    if (!formData.email || !formData.password) {
-      setErrorMessage('Please fill out both fields.');
-      return;
-    }
-
-    // Handle login logic here (e.g., call API to authenticate the user)
-    console.log('Form submitted:', formData);
-    // If login is successful, clear error message and proceed
-    setErrorMessage('');
+    console.log('Email:', email, 'Password:', password);
   };
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>Login</h2>
-      {errorMessage && <p style={styles.error}>{errorMessage}</p>}
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="email">Email</label>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        background: '#FAF3F0', // Pearl color
+        color: '#333',
+      }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          width: '400px',
+          background: '#fff',
+          padding: '30px',
+          borderRadius: '15px',
+          boxShadow:
+            '0px 10px 15px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.9)',
+          transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.transform = 'scale(1.02)';
+          e.currentTarget.style.boxShadow =
+            '0px 10px 25px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.9)';
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
+          e.currentTarget.style.boxShadow =
+            '0px 10px 15px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.9)';
+        }}
+      >
+        {/* Logo */}
+        <h2
+          style={{
+            textAlign: 'center',
+            marginBottom: '20px',
+            fontSize: '2.5rem',
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            letterSpacing: '3px',
+            color: 'rgb(0, 188, 212)', // Secondary color
+          }}
+        >
+          Login
+        </h2>
+
+        {/* Email Field */}
+        <div style={{ marginBottom: '20px' }}>
+          <label
+            htmlFor="email"
+            style={{
+              display: 'block',
+              marginBottom: '5px',
+              fontWeight: 'bold',
+              fontSize: '14px',
+              color: '#555',
+            }}
+          >
+            Email
+          </label>
           <input
             type="email"
             id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter your email"
-            style={styles.input}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="Enter your email"
+            style={{
+              width: '100%',
+              padding: '12px',
+              border: '1px solid #ddd',
+              borderRadius: '8px',
+              fontSize: '16px',
+              outline: 'none',
+              transition: 'border-color 0.3s ease',
+            }}
+            onFocus={(e) => (e.target.style.borderColor = 'rgb(0, 188, 212)')}
+            onBlur={(e) => (e.target.style.borderColor = '#ddd')}
           />
         </div>
-        <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="password">Password</label>
+
+        {/* Password Field */}
+        <div style={{ marginBottom: '20px' }}>
+          <label
+            htmlFor="password"
+            style={{
+              display: 'block',
+              marginBottom: '5px',
+              fontWeight: 'bold',
+              fontSize: '14px',
+              color: '#555',
+            }}
+          >
+            Password
+          </label>
           <input
             type="password"
             id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Enter your password"
-            style={styles.input}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Enter your password"
+            style={{
+              width: '100%',
+              padding: '12px',
+              border: '1px solid #ddd',
+              borderRadius: '8px',
+              fontSize: '16px',
+              outline: 'none',
+              transition: 'border-color 0.3s ease',
+            }}
+            onFocus={(e) => (e.target.style.borderColor = 'rgb(0, 188, 212)')}
+            onBlur={(e) => (e.target.style.borderColor = '#ddd')}
           />
         </div>
-        <button type="submit" style={styles.button}>Login</button>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          style={{
+            width: '100%',
+            padding: '12px',
+            backgroundColor: 'rgb(0, 188, 212)', // Secondary color
+            color: '#fff',
+            border: 'none',
+            borderRadius: '8px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease',
+          }}
+          onMouseOver={(e) =>
+            (e.target.style.backgroundColor = 'rgb(0, 150, 170)')
+          }
+          onMouseOut={(e) =>
+            (e.target.style.backgroundColor = 'rgb(0, 188, 212)')
+          }
+        >
+          Login
+        </button>
+
+        {/* Additional Options */}
+        <div
+          style={{
+            marginTop: '20px',
+            textAlign: 'center',
+            fontSize: '14px',
+            color: '#333',
+          }}
+        >
+          Don't have an account?{' '}
+          <a
+            href="/signup"
+            style={{
+              color: 'rgb(0, 188, 212)',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              transition: 'color 0.3s ease',
+            }}
+            onMouseOver={(e) => (e.target.style.color = 'rgb(0, 150, 170)')}
+            onMouseOut={(e) => (e.target.style.color = 'rgb(0, 188, 212)')}
+          >
+            Sign Up
+          </a>
+        </div>
       </form>
-      <p style={styles.signupLink}>
-        Don't have an account? <a href="/signup" style={styles.link}>Sign up</a>
-      </p>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    maxWidth: '400px',
-    margin: '0 auto',
-    padding: '20px',
-    backgroundColor: '#f9f9f9',
-    borderRadius: '8px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    textAlign: 'center',
-  },
-  heading: {
-    marginBottom: '20px',
-    fontSize: '2rem',
-    fontWeight: '600',
-    color: '#333',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '15px',
-  },
-  formGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-  label: {
-    marginBottom: '8px',
-    fontSize: '1rem',
-    fontWeight: '500',
-    color: '#555',
-  },
-  input: {
-    padding: '10px',
-    fontSize: '1rem',
-    width: '100%',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-    outline: 'none',
-    transition: 'border-color 0.3s',
-  },
-  button: {
-    padding: '12px 20px',
-    fontSize: '1rem',
-    backgroundColor: '#007bff',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
-  },
-  error: {
-    color: 'red',
-    marginBottom: '10px',
-    fontSize: '1rem',
-  },
-  signupLink: {
-    marginTop: '20px',
-    fontSize: '1rem',
-    color: '#555',
-  },
-  link: {
-    textDecoration: 'none',
-    color: '#007bff',
-  },
 };
 
 export default Login;

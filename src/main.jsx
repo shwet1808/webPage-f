@@ -22,6 +22,10 @@ const router = createBrowserRouter([
           element: <IntroPage />
         },
         {
+          path: "Home",
+          element: <Home />
+        },
+        {
           path: "about",
           element: <About />
         },
@@ -30,11 +34,7 @@ const router = createBrowserRouter([
           element: <Contact />
         },
         {
-          path: "Home",
-          element: <Home />
-        },
-        {
-          path: "Login ",
+          path: "Login",
           element: <Login />
         },
 
