@@ -5,15 +5,19 @@ const Navbar = () => {
   return (
     <nav
       style={{
-        backgroundColor: '#333',
-        color: 'white',
+        backgroundColor: '#1a1a1a',
+        color: '#ffffff',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '10px 20px',
+        padding: '1rem 2rem',
         position: 'sticky',
         top: 0,
         zIndex: 1000,
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+        borderBottom: '1px solid rgba(255,255,255,0.1)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
       }}
     >
       {/* Brand */}
@@ -90,7 +94,7 @@ const Navbar = () => {
               display: 'block',
             })}
           >
-            Login
+            Login 
           </NavLink>
         </li>
       </ul>
