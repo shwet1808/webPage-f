@@ -1,110 +1,99 @@
-
 import React from "react";
 
 const IntroPage = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        minHeight: "100vh",
-        padding: "20px",
-        backgroundColor: "#f4f4f9",
-        color: "#333",
-        fontFamily: "'Arial', sans-serif",
-      }}
-    >
-      {/* Hero Section */}
-      <div
-        style={{
-          maxWidth: "800px",
-          marginBottom: "40px",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "3rem",
-            fontWeight: "bold",
-            marginBottom: "20px",
-            color: "#1a1a2e",
-          }}
-        >
-          Welcome to <span style={{ color: "#00bcd4" }}>MyBrand</span>
-        </h1>
-        <p
-          style={{
-            fontSize: "1.2rem",
-            color: "#555",
-            marginBottom: "30px",
-          }}
-        >
-          Discover amazing products and services tailored just for you. Our
-          platform offers the best tools to make your experience enjoyable and
-          hassle-free.
-        </p>
+  const styles = {
+    container: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      minHeight: "100vh",
+      background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                  url("https://media.istockphoto.com/id/1080861192/vector/gold-glitter-texture-vector.jpg?s=612x612&w=0&k=20&c=ff3jkRbJXKnoJR_wlhJqXg67KcSjz4Uwms5nUACZ4t8=") center/cover no-repeat`,
+      color: "white",
+      textAlign: "center",
+      padding: "20px",
+      boxSizing: "border-box",
+    },
+    content: {
+      maxWidth: "800px",
+      animation: "fadeIn 2s ease-in-out",
+    },
+    heading: {
+      fontSize: "4rem",
+      fontWeight: "bold",
+      marginBottom: "20px",
+      animation: "slideIn 2s ease-in-out",
+    },
+    paragraph: {
+      fontSize: "1.5rem",
+      marginBottom: "30px",
+      lineHeight: "1.8",
+    },
+    buttonGroup: {
+      marginTop: "20px",
+    },
+    button: {
+      padding: "15px 25px",
+      fontSize: "1.2rem",
+      fontWeight: "bold",
+      border: "none",
+      borderRadius: "25px",
+      cursor: "pointer",
+      transition: "background-color 0.3s, transform 0.2s",
+      marginRight: "15px",
+    },
+    learnMore: {
+      backgroundColor: "rgba(255, 255, 255, 0.8)",
+      color: "#333",
+    },
+    getStarted: {
+      backgroundColor: "#007bff",
+      color: "white",
+    },
+  };
 
-        {/* Call-to-Action Buttons */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "15px",
-          }}
-        >
-          <a
-            href="/get-started"
-            style={{
-              textDecoration: "none",
-              padding: "12px 25px",
-              backgroundColor: "#00bcd4",
-              color: "white",
-              borderRadius: "5px",
-              fontWeight: "bold",
-              transition: "background-color 0.3s",
-            }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#008c99")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#00bcd4")}
-          >
-            Get Started
-          </a>
-          <a
-            href="/learn-more"
-            style={{
-              textDecoration: "none",
-              padding: "12px 25px",
-              backgroundColor: "#333",
-              color: "white",
-              borderRadius: "5px",
-              fontWeight: "bold",
-              transition: "background-color 0.3s",
-            }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#555")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#333")}
+  return (
+    <div style={styles.container}>
+      <style>
+        {`
+        @keyframes fadeIn {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+        @keyframes slideIn {
+          0% { transform: translateY(-50px); opacity: 0; }
+          100% { transform: translateY(0); opacity: 1; }
+        }
+        `}
+      </style>
+      <div style={styles.content}>
+        <h1 style={styles.heading}>Welcome to Our Platform</h1>
+        <p style={styles.paragraph}>
+          Experience the future of innovation and creativity with us.
+        </p>
+        <div style={styles.buttonGroup}>
+          <button
+            style={{ ...styles.button, ...styles.learnMore }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "white")}
+            onMouseLeave={(e) =>
+              (e.target.style.backgroundColor = "rgba(255, 255, 255, 0.8)")
+            }
           >
             Learn More
-          </a>
+          </button>
+          <button
+            style={{ ...styles.button, ...styles.getStarted }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#0056b3")}
+            onMouseLeave={(e) =>
+              (e.target.style.backgroundColor = "#007bff")
+            }
+          >
+            Get Started
+          </button>
         </div>
-      </div>
-
-      {/* Image Section */}
-      <div>
-        <img
-          src="https://images.pexels.com/photos/29410753/pexels-photo-29410753/free-photo-of-scenic-colonial
-          -mansion-with-palm-trees.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-          alt="Intro Image"
-          style={{
-            maxWidth: "100%",
-            borderRadius: "10px",
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-          }}
-        />
       </div>
     </div>
   );
 };
 
 export default IntroPage;
-

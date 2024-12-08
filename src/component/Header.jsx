@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav
       style={{
-        backgroundColor: '#1a1a1a',
+        backgroundColor: 'rgba(26, 26, 26, 0.8)', // Semi-transparent black
         color: '#ffffff',
         display: 'flex',
         justifyContent: 'space-between',
@@ -14,10 +14,10 @@ const Navbar = () => {
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        borderBottom: '1px solid rgba(255,255,255,0.1)',
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+        backdropFilter: 'blur(12px)', // Adds the glass effect
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
       }}
     >
       {/* Brand */}
@@ -27,6 +27,8 @@ const Navbar = () => {
           style={{
             color: 'white',
             textDecoration: 'none',
+            fontFamily: `'Poppins', sans-serif`,
+            letterSpacing: '1px',
           }}
         >
           MyBrand
@@ -41,17 +43,22 @@ const Navbar = () => {
           gap: '15px',
           margin: 0,
           padding: 0,
+          fontFamily: `'Poppins', sans-serif`,
         }}
       >
         <li>
           <NavLink
             to="/home"
             style={({ isActive }) => ({
-              color: isActive ? 'red' : 'white',
+              color: isActive ? '#00bcd4' : 'white',
               textDecoration: 'none',
               padding: '8px 15px',
               display: 'block',
+              borderRadius: '5px',
+              transition: 'color 0.3s, background-color 0.3s',
             })}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}
           >
             Home
           </NavLink>
@@ -60,11 +67,15 @@ const Navbar = () => {
           <NavLink
             to="/about"
             style={({ isActive }) => ({
-              color: isActive ? 'red' : 'white',
+              color: isActive ? '#00bcd4' : 'white',
               textDecoration: 'none',
               padding: '8px 15px',
               display: 'block',
+              borderRadius: '5px',
+              transition: 'color 0.3s, background-color 0.3s',
             })}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}
           >
             About
           </NavLink>
@@ -73,11 +84,15 @@ const Navbar = () => {
           <NavLink
             to="/contact"
             style={({ isActive }) => ({
-              color: isActive ? 'red' : 'white',
+              color: isActive ? '#00bcd4' : 'white',
               textDecoration: 'none',
               padding: '8px 15px',
               display: 'block',
+              borderRadius: '5px',
+              transition: 'color 0.3s, background-color 0.3s',
             })}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = 'transparent')}
           >
             Contact
           </NavLink>
@@ -86,15 +101,18 @@ const Navbar = () => {
           <NavLink
             to="/Login"
             style={({ isActive }) => ({
-              color: isActive ? 'red' : 'white',
+              color: isActive ? '#ffffff' : 'white',
               textDecoration: 'none',
-              backgroundColor: '#00bcd4',
+              backgroundColor: isActive ? '#00bcd4' : '#007bff',
               padding: '8px 15px',
               borderRadius: '5px',
               display: 'block',
+              transition: 'background-color 0.3s, transform 0.2s',
             })}
+            onMouseEnter={(e) => (e.target.style.transform = 'scale(1.05)')}
+            onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
           >
-            Login 
+            Login
           </NavLink>
         </li>
       </ul>
